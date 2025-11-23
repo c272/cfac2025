@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=4 uid="uid://lvy2n6iat06s"]
+
+[ext_resource type="Script" uid="uid://rl0kgoh7umvb" path="res://scripts/bullet.gd" id="1_v5xoj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wskyi"]
+size = Vector2(17, 11)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_v5xoj"]
+_data = PackedByteArray("AAADAAUAAAABAAAAlgAAAJwAAAAkAQAAUklGRhwBAABXRUJQVlA4TA8BAAAvlcAmEDdAFgwygvyPJCJMg0AQomfOGOkdgmyb+vOM6CKf/wB07lqSbAO3kSS5zVGdT+UTSAGFDL7gK/qQm38MlHuPIy0V0X8GbhspSo8xs/AJ+fSPxgcW0xY6gyknBcUlajKlXBFGkEJFCDCY0qLBi1ALm5DGNZW2CGGkewIS2VToXlWBYbTRj7QiBh2jElv2DKY/wqPq6oBeXr6ylveZobpW+bWNfwzwSgahll4DD8CvLb2Gke6IYoy9QcEjGKO3uOWkhWHj6RHlbQwf0hkmRit+0lpK+z+U1BGn7dIPuzpJb+JhX9bb2yw9kJd5ltXnc+KBc3m+5rh0we15Ii64fWTp4rVz8pbGs6TyIRwBAA==")
+size_override = Vector2(150, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxuqu"]
+atlas = SubResource("PortableCompressedTexture2D_v5xoj")
+region = Rect2(100, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg4ic"]
+atlas = SubResource("PortableCompressedTexture2D_v5xoj")
+region = Rect2(0, 52, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c16su"]
+atlas = SubResource("PortableCompressedTexture2D_v5xoj")
+region = Rect2(50, 52, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqcrf"]
+atlas = SubResource("PortableCompressedTexture2D_v5xoj")
+region = Rect2(100, 52, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxa8g"]
+atlas = SubResource("PortableCompressedTexture2D_v5xoj")
+region = Rect2(0, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nw61"]
+atlas = SubResource("PortableCompressedTexture2D_v5xoj")
+region = Rect2(50, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np0t5"]
+atlas = SubResource("PortableCompressedTexture2D_v5xoj")
+region = Rect2(0, 104, 50, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t00uh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxuqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg4ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c16su")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqcrf")
+}],
+"loop": false,
+"name": &"CBulletHit",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxa8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nw61")
+}],
+"loop": true,
+"name": &"CBulletMove",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np0t5")
+}],
+"loop": true,
+"name": &"Cog Nail",
+"speed": 20.0
+}]
+
+[node name="CBullet" type="Area2D"]
+script = ExtResource("1_v5xoj")
+move_anim = "CBulletMove"
+hit_anim = "CBulletHit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_wskyi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_t00uh")
+animation = &"CBulletMove"
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://sprites/Bullets.aseprite",
+"source_uid": 5537383550939691175
+}
+metadata/_aseprite_wizard_source_file_hash_ = "fb5193631e681c5c601a310ca42cea72"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

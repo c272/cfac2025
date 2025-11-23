@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bc8jkwfjyk7i6"
+path="res://.godot/imported/Cog Enemy.aseprite-cd16f5a8f5e3b902ca7ce5fc00bb84cf.res"
+
+[deps]
+
+source_file="res://sprites/Cog Enemy.aseprite"
+dest_files=["res://.godot/imported/Cog Enemy.aseprite-cd16f5a8f5e3b902ca7ce5fc00bb84cf.res"]
+
+[params]
+

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=4 uid="uid://bdbigr3pjo018"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ngmwo"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ngmwo"]
+_data = PackedByteArray("AAADAAUAAAABAAAAFAAAABQAAABcAAAAUklGRlQAAABXRUJQVlA4TEgAAAAvE8AEECcgEEjyNxloN4EA4X/DmRECgSR/nVUGmv8A0GRuUNRIUkRwsIcA0g4IEvDvqp8rIKL/E7DGPABbIiLsvt8WEWEAMi0=")
+size_override = Vector2(20, 20)
+
+[node name="PizzaEnemyRopeSegment" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ngmwo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_ngmwo")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://sprites/PizzaEnemyChainlink.aseprite",
+"source_uid": 1001236275532669222
+}
+metadata/_aseprite_wizard_source_file_hash_ = "100009120412cf2862446fb830f1c837"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dbfxkom10lvvr"
+path="res://.godot/imported/ParallaxTest.aseprite-155db6c6a262885599ebb5292ee3b3e5.res"
+
+[deps]
+
+source_file="res://sprites/ParallaxTest.aseprite"
+dest_files=["res://.godot/imported/ParallaxTest.aseprite-155db6c6a262885599ebb5292ee3b3e5.res"]
+
+[params]
+

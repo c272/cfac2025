@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=4 uid="uid://ckbmvcffjhej4"]
+
+[ext_resource type="Script" uid="uid://cqphij542buiw" path="res://scripts/basic_enemy.gd" id="1_foxpl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ld2l8"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_foxpl"]
+_data = PackedByteArray("AAADAAUAAAABAAAAlgAAAGgAAAAAAgAAUklGRvgBAABXRUJQVlA4TOwBAAAvlcAZEFdgEGCaBRxdHDFk8msYiGCGPPr3cGpsHZ5Aw+L1BBVLBBHM/AcC4nN5OW5XgDbk2eAY5DrbHkeVfQf+NHFkUXILOyXil0hKFl8A2y/anXonU7qclnIuMzHC/nGG7Rwpov8O3EZSpCyz9+AT6v+RwQCALgR031Rha7JwQAjt6srKBCWATLdDXdcR6TJAT8zcFAFSoT3ve6lUEaBpfcT1kSsBhDDlI+YjhwJA981TVFMtHtAwFAFCmEY5FABSQzhipz4DVPLv2dzRuz9TAaALuxv9k68hCLqLQYQP2/PbNAx7VhBk0RIRLlKkMWhPFGTbKtCeXzygGTBLySAGQUuC4LXZswkgpWKQUpKgvT4/ChCQNkNG1nivE0EqfUiVAjBAKiijSPrf9WAAQGeAZLtvqrA1yQCNNYR2dWVlggyQ5PFuh7quI9IZINGemLkhnQOSG0J73vdS5YAkm/IwuDQQuD5ykmdGUoZDEqhmPnKQvOsT10d81FRpIB5AsqFmBqCLiBlYfpvrNBBLhugUzOfzpUQQOwhfVkfbiSB2apS/Z3NH7/5lGSC5Lu524784MkBy7Vm0RIQLmwESzNu2CrTnbTpotM2AWV8qSDQDeG32LHQWSHC1z9ss0GizxnudARINgAF0Duh7OSg=")
+size_override = Vector2(150, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o7vc"]
+atlas = SubResource("PortableCompressedTexture2D_foxpl")
+region = Rect2(0, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgfpt"]
+atlas = SubResource("PortableCompressedTexture2D_foxpl")
+region = Rect2(0, 52, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4ded"]
+atlas = SubResource("PortableCompressedTexture2D_foxpl")
+region = Rect2(50, 52, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqjvx"]
+atlas = SubResource("PortableCompressedTexture2D_foxpl")
+region = Rect2(50, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctv36"]
+atlas = SubResource("PortableCompressedTexture2D_foxpl")
+region = Rect2(100, 0, 50, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ulalf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o7vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgfpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4ded")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o7vc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o7vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqjvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o7vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctv36")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 10.0
+}]
+
+[node name="BasicEnemy" type="CharacterBody2D"]
+script = ExtResource("1_foxpl")
+fireOffset = Vector2(-25, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ld2l8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, -8)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_ulalf")
+animation = &"Idle"
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://sprites/Cog Enemy.aseprite",
+"source_uid": 2595488311406232031
+}
+metadata/_aseprite_wizard_source_file_hash_ = "19d57b2433a5e3698c66b8b518a5146f"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

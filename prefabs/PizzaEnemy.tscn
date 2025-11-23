@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=4 uid="uid://dbmr6h5e2ff8p"]
+
+[ext_resource type="Script" uid="uid://cwe2xmmt866eb" path="res://scripts/pizza_enemy.gd" id="1_k4b2t"]
+[ext_resource type="Script" uid="uid://b2shq2gjd4fvt" path="res://addons/ropesim/Rope.gd" id="3_jniym"]
+[ext_resource type="Script" uid="uid://dfppmnngy2wx4" path="res://addons/ropesim/RopeRendererLine2D.gd" id="4_jniym"]
+[ext_resource type="Texture2D" uid="uid://devesiti3dqsa" path="res://sprites/PizzaEnemyChainlink.png" id="4_oiob4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgbkb"]
+radius = 11.0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_d5er4"]
+_data = PackedByteArray("AAADAAUAAAABAAAANgAAADwAAADIAQAAUklGRsABAABXRUJQVlA4TLQBAAAvNcAOEFegEJIkZ3Wujud88/0jZC+FkKxQJ/AE+vorlEFSKWYkCerxGZ/5LfcKXBjzHwCAeHxKzFtqcwedSYtacBkgZ9vbtuHDDX4Wp5wEbKAHXkBPtEAKdU/TPSNkhIyQY9akBBhOO0f034HbtpGkZsZz7KEd7yvCb13RZjghQfYktiUuyfR7RzS5uIwWb+9kSSSADRigaCS+bg35AR/XVcfw2HDdSPst9fO2RkMCm4XhtwlqiamkbqH9ZtKCaakl89gtlN9IKTfaM0kn0556FErySHuJIoJCrPxGyZOAtJ/kvml1EYB5zygZrJ8SRLD56d1NsXdzn6gvbxP15W1A1s8SsPG2PreKHlnM5yljbmS0MBezhWnudRnd4UR3aKQbX1qzGl+7RI3a4nFdzf/Juh4oaIsEcNCLAYrBGO6bNRzD/7riGQx0xqRLOoOLy5Nxojt34usW0ZmPDdeNnLlUfN7W6MyppB7OLJnHHi4m6Tx6GB5rEcExOzmKiGQKLkbJAJwc5Waei5OyO/G+bePRSY8stzV6W5hLI3d32HXniqW1rXFfPK4ropMhARyCd5jDX1gB")
+size_override = Vector2(54, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_136i8"]
+atlas = SubResource("PortableCompressedTexture2D_d5er4")
+region = Rect2(0, 0, 27, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv875"]
+atlas = SubResource("PortableCompressedTexture2D_d5er4")
+region = Rect2(27, 0, 27, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct08y"]
+atlas = SubResource("PortableCompressedTexture2D_d5er4")
+region = Rect2(0, 30, 27, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xp8vo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_136i8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_136i8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv875")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct08y")
+}],
+"loop": true,
+"name": &"Movement",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hojjh"]
+radius = 12.0
+
+[node name="PizzaEnemy" type="CharacterBody2D"]
+script = ExtResource("1_k4b2t")
+
+[node name="HeadCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-9, -1)
+shape = SubResource("CircleShape2D_qgbkb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-9, -2)
+sprite_frames = SubResource("SpriteFrames_xp8vo")
+animation = &"Idle"
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://sprites/PizzaEnemyHead.aseprite",
+"source_uid": 3800177463311446377
+}
+metadata/_aseprite_wizard_source_file_hash_ = "78fd7cab61b8bf531a95377ae086475c"
+
+[node name="Rope" type="Node2D" parent="."]
+z_index = -1
+position = Vector2(-15, 0)
+script = ExtResource("3_jniym")
+num_segments = 3
+rope_length = 28.0
+gravity = 20.0
+gravity_direction = Vector2(-1, 0)
+damping = 1.58
+render_line = false
+metadata/_custom_type_script = "uid://b2shq2gjd4fvt"
+
+[node name="RopeRendererLine2D" type="Line2D" parent="Rope"]
+points = PackedVector2Array(0, 0, -9.346594, 3.2e-44, -18.686558, 4.2e-44, -28.01989, 9.2e-44)
+width = 5.0
+texture = ExtResource("4_oiob4")
+texture_mode = 1
+script = ExtResource("4_jniym")
+metadata/_custom_type_script = "uid://dfppmnngy2wx4"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9, -1)
+shape = SubResource("CircleShape2D_hojjh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
