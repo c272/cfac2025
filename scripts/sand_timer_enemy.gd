@@ -2,6 +2,7 @@ extends Node2D
 
 # Exports.
 @export var fallTime: float = 1.0
+@export var damageThreshTime: float = 0.9
 @export var raiseTime: float = 2.0
 @export var fallDist: float = 75.0
 
@@ -13,6 +14,8 @@ var state = State.WAITING
 
 # Enemy state.
 var time_moving: float = 0.0
+var right_side_up = true
+var damage_dealt = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,6 +45,12 @@ func switch_state(newState: State):
 
 func falling_entered():
 	time_moving = 0.0
+	damage_dealt = false
+	
+	# Play the flip upside down/right up animation.
+	$AnimatedSprite2D.play("Flip Upside-Down" if right_side_up else "Flip Right Side Up")
+	right_side_up = !right_side_up
+	
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_ELASTIC)
@@ -49,12 +58,27 @@ func falling_entered():
 	
 func falling_process(delta: float):
 	time_moving += delta
+	if time_moving > damageThreshTime and !damage_dealt:
+		apply_falling_damage()
+	
 	if time_moving > fallTime:
 		switch_state(State.MOVING_UP)
+		
+func apply_falling_damage():
+	var bodies = $HitArea.get_overlapping_bodies()
+	for body in bodies:
+		if body != player:
+			continue
+		# Do damage to the player.
+		player.do_damage()
+		damage_dealt = true
 	
 ## MOVING UP
 	
 func moving_up_entered():
+	# Go back to the idle animation.
+	$AnimatedSprite2D.play("Idle" if right_side_up else "Idle Upside-Down")
+	
 	time_moving = 0.0
 	pass
 	
@@ -74,11 +98,3 @@ func _on_detect_area_body_entered(body: Node2D) -> void:
 		return
 	# The player entered the detector zone.
 	switch_state(State.FALLING_DOWN)
-
-
-func _on_hit_area_body_entered(body: Node2D) -> void:
-	if body != player or state != State.FALLING_DOWN:
-		return
-	
-	# Do damage to the player.
-	player.do_damage()

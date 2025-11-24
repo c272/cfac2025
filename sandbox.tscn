@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bpu42cfieriua"]
+[gd_scene load_steps=46 format=4 uid="uid://bpu42cfieriua"]
 
 [ext_resource type="PackedScene" uid="uid://djnve7xcov8j4" path="res://prefabs/Player.tscn" id="1_rvmsc"]
 [ext_resource type="Script" uid="uid://daiuyo0w2oigg" path="res://scripts/follow_cam.gd" id="2_cojph"]
@@ -16,6 +16,26 @@
 [ext_resource type="PackedScene" uid="uid://chhsvwmilwb7d" path="res://prefabs/Confetti.tscn" id="11_luwg1"]
 [ext_resource type="Script" uid="uid://c6evkj5jlqtrt" path="res://scripts/win_screen.gd" id="11_nmhe3"]
 [ext_resource type="AudioStream" uid="uid://51mc3h3otq80" path="res://sfx/yay.mp3" id="13_e4g4f"]
+[ext_resource type="Script" uid="uid://u7vvn261dvk" path="res://scripts/health_point_ui.gd" id="13_tihu5"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_tihu5"]
+_data = PackedByteArray("AAADAAUAAAABAAAA6AIAALQAAABeBQAAUklGRlYFAABXRUJQVlA4TEoFAAAv58IsAE9gNgCKijWjiUv8/5VDzDRAQgDGzUkREhnXErZQTQAkDAVGEQoRmTreHvMfAK5jQiaVJG/8p9d+6vpARwKgRpKUrGQ92lz3XqA+oCoC9xT8gLVPEIGLiXlnzncpqgqRmZWrI/rvwIGQsAEXDJmLHIhdn/COK3W8QPBdO1mrAccuvXO9MXGqA0BbeK4Ppb/eQujk7nBWrnM7FDfKzAV82ffjOFAAPdvCQmQunBIKkw6Sn0rmDIi/3M+0tPlxopOgXQXh0XVZ14VtJPQzQuMQph+FNVU4IegwJcB1yXS7hmnMw2X6ppalu64NtyBfvt2t7+LkXRgBF3o2GDCu8mEks7hq8SSGXh5tfw9XgU8hN3lrbfKnQkJwf/gwI/ypHMZJh5O4hn7OD6NyyOpsXhRhTf6d667sTsIN0n4aHmXx1ej6Y/DdGHHp4vLxbqiWrrt+QPgkOhfvaNmEd/egnsbjP5r9k/mIo57mCHzQ019JyQbbXH3x4zZV5RLU9uPsqOQSlMizN9t85uuyjGfPMu6yjDcey7jL4g2KAjHGXTbizR4JYmy7UkQcFAVibLtS5NuVIt8umxLi7FEgxrWrikXsIkCMa5etujyoOHAeGSRG1hVtWh5UGnExTgy72WxaHFRsHtBtr2GdGPL2bdPioKKt0t/RgXNi2F3JLg6qysjT4o+cE0N/Ca4Nasc1sPH4mnNi6F2Lg4o2bgOSgHFi6F2rg7J2SNKPt0UMRK4IesNYmd55UOhdYgkKefZkFtQnIC6pG4nfDS8+G3BZxgFbvl3R8t14omXbZeNOjYXCe7GKGM+uVCUmJrJ3m8Q2iFUSG67bJLb9mNq+wIPrPom9SJtlJHu3SWz7K6I8vqlVO783ME+MeuGlE7Wzg7oRYiBy/WFX+OFCn397so/ebQ1vk8q2WCcm+XHNYHxbw9tEvi3OiS0vFcp1+fxb1olxjox1YpwjY5zY8qZIuwOzTgxZqXxLq2w5Jyb2ASLXbz6YK4hcHyhU5XJQMA85KxSAAllDAUGLyrqdZS0j84REodSZzqU6nuSsb3KBXBrHfyIaqEzrkrXRjQFhm6NKyCD6kdO/Gh8zFMBIm5jaeSnooHb+akScxBR03UVwCVCcxAiBQVjuRkw3FsYTIKqvCluUyOeqmUtcVTN5H1wurIcniZwBw/PTk5L4czDk5mW6rCdQNOxaNPSePh6LgFtiquhqqhOgwEjP4/yeYUlynemiS9VmiNihmrXVtGMMC3sX/DAxfuRoSi6jTIDz25IlaY3OION/1offPRhdjKBFH6QI2eRcTr9ctBayyQcjaXlkOBpJiyqQz0yuIuShT4yW8ys2qNODyQCifqWZdwO7lfPI7YvkcrRCXtD8ACMfBUeded45IjZpkzzNOT/xAKwffcaJfXAZDzASJ/YA1onJfBB5PpPHAhJRKVEPMMfgjJwHnGXYYEVmGB9oEwHm4rqSxwIKoSFGRmDCOzGhTCSuX4vVp9n6lkBgt0js/+kRHQVxYJwT+yTdiFy/+i+fxYsCQy3Moxq+BKoSwE+I+3mGleGt9oFM1VNjytfnwINM+VNqMygKGM4UK3plKDV5Mh9UXRjRnaSgZxd0lvPoA0DYk3fgPeNGlqOIS6FLDUB39gktx+5QSNj0DLO0vHv3U8ddOJTB8gVY2I/7imRgEHQYnBZNIRmkJ7f3Jyj+X0VnFZIS6qSBsSkcB/MHDQBw5wDw/muke9AAh8XCYaQIDD7ihv6LJ2KvJxYlVBmsQXKwlHrgdCuLhZNGt8FSr617bnFgHvc9FJyruTnuipMpn9Qf")
+size_override = Vector2(744, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpxnt"]
+atlas = SubResource("PortableCompressedTexture2D_tihu5")
+region = Rect2(0, 0, 744, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jj6ux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpxnt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_p7lbm"]
 _data = PackedByteArray("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")
@@ -97,6 +117,37 @@ animations = [{
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rvmsc"]
 
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_b8cfi"]
+_data = PackedByteArray("AAADAAUAAAABAAAAZAAAADQAAACyAAAAUklGRqoAAABXRUJQVlA4TJ0AAAAvY8AMEDdAFgwylTT68odKg0wYYq8YaujfC5kwxHLJIoH+PzJhiPW/pRBDMQH4f12Kpc0ycBxJkqN0ezCrXOBPYMEF7cBJD2789wHVwRceEf2fAPzgF6LQU4hCS+wj9mGJWwt1y5zHfDnouN41SfTkmYtHj678tjgzc8AZDx3WOfOgBZMkeuLMAW9IHeb5oAmT6IoBd3TYaQN9/wYBAA==")
+size_override = Vector2(100, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tihu5"]
+atlas = SubResource("PortableCompressedTexture2D_b8cfi")
+region = Rect2(50, 0, 50, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0501"]
+atlas = SubResource("PortableCompressedTexture2D_b8cfi")
+region = Rect2(0, 0, 50, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rpxnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tihu5")
+}],
+"loop": true,
+"name": &"Empty",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0501")
+}],
+"loop": true,
+"name": &"Full",
+"speed": 10.0
+}]
+
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_nmhe3"]
 _data = PackedByteArray("AAADAAUAAAABAAAAAAIAAIAAAAC0AwAAUklGRqwDAABXRUJQVlA4TJ8DAAAv/8EfEA8Q8x/zHww6zrZFlp0PERCSOrp4IZbwsmbD8bisxnPoLdDqBVw80zo0n1RQVUB5dhLRfwdu2zgS93rVzOzuI/CfwBbF1V1JXt2V1dVd5U/fVS/v4qG0vivDUx5miOVdRQQethQJfLC2q8p4ri7uUpE4Q7G2SycH2Cu7TLLwDvjgqq5ik0GhQN3zi7uyywakBMUBrzpBLulKLmtPqk0UncCg+/OFWtIV+awDqT1FkjvRdJJe0tWaImk2WXWiW9vlSdVDOZXXdSW+2CPJru1CJ7ngjgS9tKtSJhub2svGq6VdhSKZwEZuvtbZAJ2i1nQlIumN7T2ZrBd3xcYf+NmWTVALu9D70oKipxKiXtolksaB+yaLZBp5TZcrqshOXdhlNs6zW2VXZVEbvbirnrLerOuqg4Jd2RUt6s0F12EVReWGYlWX7HCPjVvc5Zp4Il7RZfeqKku7igwEb3zcQ5U9LO0S/PEY09Iuz9vmbvYoK5Px67qUJzc8IlZ3oZsM6sbRdZ6v6so98lkv7ap0KFSNrRZEx63qyhqFdiOPcW1XpkGmaEw1oN+opV2JGol9RNVNXdwVKRFdk1RRO7CrupLG0RZllk2hxKtLuoAkNq5bpVVdUZ0AmkyxrivIy7omto+8S9d2vdXgyi7ARndx16twdRe8RRLn3hjuGlthgyzPfdDtRSNdo3tYUedqqzGjXUkDSc+iADgsm/b6ySjP+U2gHe0qDiizwpxKoJ6Rp+ImHpJnBLgJblRpFDLNOAlaIPGgVByj6hSa4S4q3xSKnXz2C7pTqTHaRd3h6AEdaJGowSM4ZcImTOASDnGGyDRT7rZJM2SmDaQa9rOLJDKJMbHjIuso8IlNGZZIlV+75Kqc8PhAQbpxZpMdh9Wv+fTAG2mHFZt/YLETPuHvhl+Oi8zM32/qsKJIwyfezYSXL/iiKcZVmvozn0cFJlKRakbZ3Fn0sEhqUs7I1JVumKcnVeUnxKjcFJqihsna3GakRo/v11WWnhimI1VLkzNkoSDGBao8J1Nm+hloJCckqqTn1I2Y2S/epopyQtLIMhETNKoEvJsRRdQTskYWQOCE3f6FCW/OdSWzABp3mdQL08KVFnXFcXFatLtfmhXnLRjXdV1kN72XcnOCxZePP79Tp5BAMuNcJUlOdDUWeaprBZqsh/kdPT2ueWZ6XNfdYEdd14W0iMTsRU55eP07xQykOeWGBVshBa7dKnEx7/A/2wYA")
 size_override = Vector2(512, 128)
@@ -152,8 +203,35 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
-z_index = -4
+z_index = -10
 position = Vector2(685, 88)
+
+[node name="Road" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(744, 0)
+repeat_times = 4
+screen_offset = Vector2(745, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Road"]
+texture_filter = 1
+position = Vector2(-290, 61)
+sprite_frames = SubResource("SpriteFrames_jj6ux")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://sprites/Road.aseprite",
+"source_uid": 940558879694339484
+}
+metadata/_aseprite_wizard_source_file_hash_ = "38cfd309cf87cd6fa46586b491630b58"
 
 [node name="Back" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.25, 1)
@@ -285,7 +363,7 @@ parameters/looping = true
 position = Vector2(754, 122)
 
 [node name="SuccessZone" type="Area2D" parent="Game"]
-position = Vector2(1603, 80)
+position = Vector2(1603, -134)
 script = ExtResource("6_tctsc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/SuccessZone"]
@@ -311,6 +389,7 @@ position = Vector2(1157, 191)
 position = Vector2(320, 53)
 
 [node name="StartGameScreen" type="Node2D" parent="."]
+visible = false
 script = ExtResource("5_44b12")
 
 [node name="Logo" type="AnimatedSprite2D" parent="StartGameScreen"]
@@ -389,6 +468,83 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("5_ypj6x")
 theme_override_font_sizes/font_size = 24
 text = "+150"
+
+[node name="HealthPoints" type="CanvasGroup" parent="HUD/Modularity" node_paths=PackedStringArray("player")]
+position = Vector2(-1, 0)
+script = ExtResource("13_tihu5")
+player = NodePath("../../../Game/Player")
+
+[node name="Heart3" type="AnimatedSprite2D" parent="HUD/Modularity/HealthPoints"]
+texture_filter = 1
+position = Vector2(1247, 81)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_rpxnt")
+animation = &"Full"
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://sprites/Hearts.aseprite",
+"source_uid": 2482306446154178696
+}
+metadata/_aseprite_wizard_source_file_hash_ = "d5208774f687e0906d4d7fc95ab74245"
+
+[node name="Heart2" type="AnimatedSprite2D" parent="HUD/Modularity/HealthPoints"]
+texture_filter = 1
+position = Vector2(1203, 81)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_rpxnt")
+animation = &"Full"
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://sprites/Hearts.aseprite",
+"source_uid": 2482306446154178696
+}
+metadata/_aseprite_wizard_source_file_hash_ = "d5208774f687e0906d4d7fc95ab74245"
+
+[node name="Heart1" type="AnimatedSprite2D" parent="HUD/Modularity/HealthPoints"]
+texture_filter = 1
+position = Vector2(1158, 81)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_rpxnt")
+animation = &"Full"
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://sprites/Hearts.aseprite",
+"source_uid": 2482306446154178696
+}
+metadata/_aseprite_wizard_source_file_hash_ = "d5208774f687e0906d4d7fc95ab74245"
 
 [node name="WinScreen" type="CanvasLayer" parent="."]
 visible = false
