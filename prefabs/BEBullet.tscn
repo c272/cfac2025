@@ -71,7 +71,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_np0t5")
 }],
-"loop": true,
+"loop": false,
 "name": &"Cog Nail",
 "speed": 20.0
 }]

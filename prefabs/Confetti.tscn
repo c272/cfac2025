@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://chhsvwmilwb7d"]
+
+[ext_resource type="Script" uid="uid://w4lfcxvd2hxe" path="res://scripts/confetti.gd" id="1_uwj0t"]
+[ext_resource type="Texture2D" uid="uid://0n5kdxvlo805" path="res://sprites/confetti_small.png" id="2_8180g"]
+
+[sub_resource type="Curve" id="Curve_so16f"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.49897757, -0.015313983), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Confetti" type="Node2D"]
+script = ExtResource("1_uwj0t")
+
+[node name="Particles1" type="CPUParticles2D" parent="."]
+rotation = 0.52855456
+emitting = false
+amount = 65
+lifetime = 8.0
+one_shot = true
+explosiveness = 0.9
+direction = Vector2(0, -1)
+spread = 11.3
+gravity = Vector2(0, 100)
+initial_velocity_min = 192.16
+initial_velocity_max = 449.12
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+color = Color(0.31680557, 0.73429763, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_so16f")
+
+[node name="Particles2" type="CPUParticles2D" parent="."]
+position = Vector2(-7, -2)
+rotation = 0.48037484
+emitting = false
+amount = 65
+lifetime = 8.0
+one_shot = true
+explosiveness = 0.9
+direction = Vector2(0, -1)
+spread = 11.3
+gravity = Vector2(0, 100)
+initial_velocity_min = 192.16
+initial_velocity_max = 449.12
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+color = Color(0.7785665, 0, 0.096101455, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_so16f")
+
+[node name="Particles3" type="CPUParticles2D" parent="."]
+rotation = 0.5252861
+emitting = false
+amount = 65
+texture = ExtResource("2_8180g")
+lifetime = 8.0
+one_shot = true
+explosiveness = 0.9
+direction = Vector2(0, -1)
+spread = 11.3
+gravity = Vector2(0, 100)
+initial_velocity_min = 192.16
+initial_velocity_max = 449.12
+angular_velocity_min = 101.65
+angular_velocity_max = 175.06
+angle_min = 118.6
+angle_max = 186.3
+scale_amount_min = 0.4
+scale_amount_max = 0.5
+color = Color(0.9479714, 0.71911764, 0.06626339, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_so16f")

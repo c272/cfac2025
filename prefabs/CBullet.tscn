@@ -1,9 +1,18 @@
-[gd_scene load_steps=12 format=4 uid="uid://lvy2n6iat06s"]
+[gd_scene load_steps=14 format=4 uid="uid://lvy2n6iat06s"]
 
 [ext_resource type="Script" uid="uid://rl0kgoh7umvb" path="res://scripts/bullet.gd" id="1_v5xoj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wskyi"]
 size = Vector2(17, 11)
+
+[sub_resource type="Gradient" id="Gradient_v5xoj"]
+offsets = PackedFloat32Array(0, 0.99136066)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.12941177)
+
+[sub_resource type="Curve" id="Curve_v5xoj"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_v5xoj"]
 _data = PackedByteArray("AAADAAUAAAABAAAAlgAAAJwAAAAkAQAAUklGRhwBAABXRUJQVlA4TA8BAAAvlcAmEDdAFgwygvyPJCJMg0AQomfOGOkdgmyb+vOM6CKf/wB07lqSbAO3kSS5zVGdT+UTSAGFDL7gK/qQm38MlHuPIy0V0X8GbhspSo8xs/AJ+fSPxgcW0xY6gyknBcUlajKlXBFGkEJFCDCY0qLBi1ALm5DGNZW2CGGkewIS2VToXlWBYbTRj7QiBh2jElv2DKY/wqPq6oBeXr6ylveZobpW+bWNfwzwSgahll4DD8CvLb2Gke6IYoy9QcEjGKO3uOWkhWHj6RHlbQwf0hkmRit+0lpK+z+U1BGn7dIPuzpJb+JhX9bb2yw9kJd5ltXnc+KBc3m+5rh0we15Ii64fWTp4rVz8pbGs6TyIRwBAA==")
@@ -82,8 +91,26 @@ move_anim = "CBulletMove"
 hit_anim = "CBulletHit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_wskyi")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -1)
+amount = 10
+lifetime = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(1, 2.86)
+gravity = Vector2(-100, 0)
+angle_min = -107.3
+angle_max = 79.1
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+color = Color(0.3529412, 0.3529412, 0.58431375, 1)
+color_ramp = SubResource("Gradient_v5xoj")
+hue_variation_min = -0.05
+hue_variation_max = 0.03
+hue_variation_curve = SubResource("Curve_v5xoj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

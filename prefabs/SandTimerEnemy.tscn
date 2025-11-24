@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=4 uid="uid://b1la3vjb7vnor"]
+
+[ext_resource type="PackedScene" uid="uid://c4tq1pvjnvo4u" path="res://prefabs/SandTimerEnemyBody.tscn" id="1_e73bd"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_e73bd"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAACAAAABmAAAAUklGRl4AAABXRUJQVlA4TFIAAAAvP8AHEA8QEWMTglFsW21u+hIJSE2kIQUJLNPpzUFE/yeAhtpaEVlr7QRvJFE23jEJy5ka3tSU2f6UyMh2b9XZzVTplMhsKjUdqYE/ATqSQERD")
+size_override = Vector2(64, 32)
+
+[node name="SandTimerEnemy" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
+texture_filter = 1
+position = Vector2(0, 88)
+scale = Vector2(0.35, 0.35)
+texture = SubResource("PortableCompressedTexture2D_e73bd")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://sprites/HourglassShadow.aseprite",
+"source_uid": 491835045876719237
+}
+metadata/_aseprite_wizard_source_file_hash_ = "fd82b8757754af9208c2fe59e0566520"
+
+[node name="SandTimerEnemyBody" parent="." instance=ExtResource("1_e73bd")]

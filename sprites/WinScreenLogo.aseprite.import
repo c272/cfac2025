@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bp8ohg6drsqkn"
+path="res://.godot/imported/WinScreenLogo.aseprite-daeaab8433a3d88bdf2048e263308f15.res"
+
+[deps]
+
+source_file="res://sprites/WinScreenLogo.aseprite"
+dest_files=["res://.godot/imported/WinScreenLogo.aseprite-daeaab8433a3d88bdf2048e263308f15.res"]
+
+[params]
+

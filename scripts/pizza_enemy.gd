@@ -69,7 +69,7 @@ func chasing_physics_process(_delta: float):
 	$Rope.gravity_direction = Vector2(-cos(rotation), -sin(rotation))
 	
 	# Move towards the player.
-	velocity = toPlayer.normalized() * moveSpeed
+	velocity = toPlayer.normalized() * moveSpeed * Global.time_multiplier
 	
 ## RETREATING
 func retreating_entered():
@@ -94,7 +94,7 @@ func retreating_physics_process(_delta: float):
 	$Rope.gravity_direction = Vector2(-cos(rotation), -sin(rotation))
 	
 	# Move away from the player.
-	velocity = -toPlayer.normalized() * moveSpeed
+	velocity = -toPlayer.normalized() * moveSpeed * Global.time_multiplier
 
 ## DAMAGE
 func do_damage():

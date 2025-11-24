@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://haipl01bejm0"
+path="res://.godot/imported/HourglassShadow.aseprite-339846dc99ed3ed8e9d524768be885c0.res"
+
+[deps]
+
+source_file="res://sprites/HourglassShadow.aseprite"
+dest_files=["res://.godot/imported/HourglassShadow.aseprite-339846dc99ed3ed8e9d524768be885c0.res"]
+
+[params]
+

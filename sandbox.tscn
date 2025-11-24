@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bpu42cfieriua"]
+[gd_scene load_steps=38 format=4 uid="uid://bpu42cfieriua"]
 
 [ext_resource type="PackedScene" uid="uid://djnve7xcov8j4" path="res://prefabs/Player.tscn" id="1_rvmsc"]
 [ext_resource type="Script" uid="uid://daiuyo0w2oigg" path="res://scripts/follow_cam.gd" id="2_cojph"]
@@ -10,6 +10,12 @@
 [ext_resource type="Script" uid="uid://bl23jssic0vgp" path="res://scripts/success_zone.gd" id="6_tctsc"]
 [ext_resource type="AudioStream" uid="uid://butdrakau0k2s" path="res://music/title_screen.ogg" id="7_0fpt2"]
 [ext_resource type="PackedScene" uid="uid://dbmr6h5e2ff8p" path="res://prefabs/PizzaEnemy.tscn" id="7_ai2o8"]
+[ext_resource type="PackedScene" uid="uid://ckbmvcffjhej4" path="res://prefabs/BasicEnemy.tscn" id="7_rgx3o"]
+[ext_resource type="PackedScene" uid="uid://b1la3vjb7vnor" path="res://prefabs/SandTimerEnemy.tscn" id="8_b8cfi"]
+[ext_resource type="Script" uid="uid://cpd2g5mxcpert" path="res://scripts/death_screen.gd" id="11_ai2o8"]
+[ext_resource type="PackedScene" uid="uid://chhsvwmilwb7d" path="res://prefabs/Confetti.tscn" id="11_luwg1"]
+[ext_resource type="Script" uid="uid://c6evkj5jlqtrt" path="res://scripts/win_screen.gd" id="11_nmhe3"]
+[ext_resource type="AudioStream" uid="uid://51mc3h3otq80" path="res://sfx/yay.mp3" id="13_e4g4f"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_p7lbm"]
 _data = PackedByteArray("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")
@@ -90,6 +96,58 @@ animations = [{
 }]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rvmsc"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_nmhe3"]
+_data = PackedByteArray("AAADAAUAAAABAAAAAAIAAIAAAAC0AwAAUklGRqwDAABXRUJQVlA4TJ8DAAAv/8EfEA8Q8x/zHww6zrZFlp0PERCSOrp4IZbwsmbD8bisxnPoLdDqBVw80zo0n1RQVUB5dhLRfwdu2zgS93rVzOzuI/CfwBbF1V1JXt2V1dVd5U/fVS/v4qG0vivDUx5miOVdRQQethQJfLC2q8p4ri7uUpE4Q7G2SycH2Cu7TLLwDvjgqq5ik0GhQN3zi7uyywakBMUBrzpBLulKLmtPqk0UncCg+/OFWtIV+awDqT1FkjvRdJJe0tWaImk2WXWiW9vlSdVDOZXXdSW+2CPJru1CJ7ngjgS9tKtSJhub2svGq6VdhSKZwEZuvtbZAJ2i1nQlIumN7T2ZrBd3xcYf+NmWTVALu9D70oKipxKiXtolksaB+yaLZBp5TZcrqshOXdhlNs6zW2VXZVEbvbirnrLerOuqg4Jd2RUt6s0F12EVReWGYlWX7HCPjVvc5Zp4Il7RZfeqKku7igwEb3zcQ5U9LO0S/PEY09Iuz9vmbvYoK5Px67qUJzc8IlZ3oZsM6sbRdZ6v6so98lkv7ap0KFSNrRZEx63qyhqFdiOPcW1XpkGmaEw1oN+opV2JGol9RNVNXdwVKRFdk1RRO7CrupLG0RZllk2hxKtLuoAkNq5bpVVdUZ0AmkyxrivIy7omto+8S9d2vdXgyi7ARndx16twdRe8RRLn3hjuGlthgyzPfdDtRSNdo3tYUedqqzGjXUkDSc+iADgsm/b6ySjP+U2gHe0qDiizwpxKoJ6Rp+ImHpJnBLgJblRpFDLNOAlaIPGgVByj6hSa4S4q3xSKnXz2C7pTqTHaRd3h6AEdaJGowSM4ZcImTOASDnGGyDRT7rZJM2SmDaQa9rOLJDKJMbHjIuso8IlNGZZIlV+75Kqc8PhAQbpxZpMdh9Wv+fTAG2mHFZt/YLETPuHvhl+Oi8zM32/qsKJIwyfezYSXL/iiKcZVmvozn0cFJlKRakbZ3Fn0sEhqUs7I1JVumKcnVeUnxKjcFJqihsna3GakRo/v11WWnhimI1VLkzNkoSDGBao8J1Nm+hloJCckqqTn1I2Y2S/epopyQtLIMhETNKoEvJsRRdQTskYWQOCE3f6FCW/OdSWzABp3mdQL08KVFnXFcXFatLtfmhXnLRjXdV1kN72XcnOCxZePP79Tp5BAMuNcJUlOdDUWeaprBZqsh/kdPT2ueWZ6XNfdYEdd14W0iMTsRU55eP07xQykOeWGBVshBa7dKnEx7/A/2wYA")
+size_override = Vector2(512, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4g4f"]
+atlas = SubResource("PortableCompressedTexture2D_nmhe3")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgx3o"]
+atlas = SubResource("PortableCompressedTexture2D_nmhe3")
+region = Rect2(256, 0, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8cfi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4g4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgx3o")
+}],
+"loop": true,
+"name": &"Win",
+"speed": 2.0
+}]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_tctsc"]
+_data = PackedByteArray("AAADAAUAAAABAAAAAAIAAIAAAACQBAAAUklGRogEAABXRUJQVlA4THwEAAAv/8EfEA8Q8x/zHwxKzvZFnpsPE5nM3CAcwdvM5CjZ5wpRQ+alj5CjhMxL5wam5WkZWh4aS4hPoqgq4L+KsonoPwQ3khRJbmnxIJo+gf8cI8hLd0V36a5EfYGudCiTcn1XFifs+q4iDxtIru+q6oxc3sVTam1XHqHXdhXhz5m1XVUOsNAru6gC5SlvlnbpQHFIN8Gu7YpnAl10S7tMOoOyuKvaRJxIi7uKzZfuctl1PoVXnbi4K7tigSpxhaB3gl3ZlVgtAjWIaHa8WdtFg0jjKZLdgV7ZFUkdntOGQ7u/I9Z1RdKNoFzTFUiVSB5JTbTw1Gu6fJObX08k2kC7rEuWDg54leki3Zou7PxO5B0bdCEjKVZ1iTPZRtNck3JNV20ePjyRbE+v6SpE0b4RO+WAWdOVN9gU06FJNnfsmq50ytNk2++LW9MVD9RO3FS6hgu7PL9r9CZTl8ZGR4olXeEAO5WqWBpEVyjXdn3X+ZeU1VA3aX2XakiK+jNVE5d1ic03/H0P9X7HL+wyofmbsuPABzQN1nYJPqPoWPBv8gJdvN3Rns9Iua7LNzY2JDrK8xGplnblBnVPeD4n9doulzau4xA2Zm0XX29sRzevV3cl0qHQdMQlumJPbywQO2lxl0Wm2phNJnVyfl1XIA1SV5F1x1S1tMtvIkWTVC/J5MK6LrDbTTRRNi4bINlAsayrUmE/OnYTF3YVykPBZq7uyhSHvMmUTSKWdUWH46EzdZMXdp2PTNtUt6YLxIBEimRpF3VdjYikSqRZ1PXpiEDqhV0Y4UnT6NVdh4eTtI069dVkV6I9UOgaeaZQzHUVusM5uEiK882+N9dF8nBjXCBxopK/THV58vgL5+lwPi/emekKPD4IxSKZgS7Kma5IUe1RhUFU52c1U011WSQe3s2Ru3IP1Ux1aUQKTIxs30C2M11JIlDNqAqIbmpeEqh6RpGA56xsZhAA5ggg2gnedT8uZnwjEKb2xU4r1xLe7d09F5oi8t7dETcK4MSx8gagTHK8CyVroB5Unosaniqr8S7UbI7WNQwInf1DuICoECZdZZNElvtVGvGup9yLekxWe2lIPZQGFZ3UjhryDVUW412oyRSzkd0lGvkRSooqxrtQoy42Kni1RYiBB01VQTHehfK7ajSCBjwHhAaRYtc1RKETm0AMME1yGO9C1sg29JIbYTcW411IBsk0SQHFDvCmNgbjXYgGUTdZwXPkWMMWiaQx0RUMgmq2PKqRB5cFksR4F4JWwEYkDm0rHLqfmOiK93W3KZUkMeIK+DIpTHSlB+aAHVLfis+vd+yYv/tNZaPHMD1/pDDRlR/dFx/knhhSePP8ke6JQQ8k2bEY6+LNbTPV9ewnUqKOZiHx+fNHBl3XqNu/SYGiMegfPrq9NZjoSnzeAMmM+oLPb6lnuiL5Oy0Q7SikZ6Se6QrkIxoguHGPSDXVRV53S8phkaSc6iq8UZs6/kC66a7O1zMPeq4rkHLz4cy8MNeF2sPEg8HkyLMC78yKs/AOpgcFLjwy/n8ZAA==")
+size_override = Vector2(512, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai2o8"]
+atlas = SubResource("PortableCompressedTexture2D_tctsc")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luwg1"]
+atlas = SubResource("PortableCompressedTexture2D_tctsc")
+region = Rect2(256, 0, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nmhe3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai2o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luwg1")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 3.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -190,6 +248,11 @@ metadata/_aseprite_wizard_source_file_hash_ = "e98de5cd135aafe7179374c88817a33e"
 position = Vector2(0, 60)
 shape = SubResource("WorldBoundaryShape2D_igx0j")
 
+[node name="TopCollision2" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(40.000004, 59.999996)
+rotation = -1.5647601
+shape = SubResource("WorldBoundaryShape2D_igx0j")
+
 [node name="BottomCollision" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(1, 240)
 shape = SubResource("WorldBoundaryShape2D_tctsc")
@@ -231,6 +294,21 @@ shape = SubResource("RectangleShape2D_tctsc")
 
 [node name="PizzaEnemyHead" parent="Game" instance=ExtResource("7_ai2o8")]
 position = Vector2(548, 202)
+
+[node name="BasicEnemy" parent="Game" instance=ExtResource("7_rgx3o")]
+position = Vector2(988, 85)
+
+[node name="BasicEnemy2" parent="Game" instance=ExtResource("7_rgx3o")]
+position = Vector2(984, 141)
+
+[node name="BasicEnemy3" parent="Game" instance=ExtResource("7_rgx3o")]
+position = Vector2(1072, 102)
+
+[node name="BasicEnemy4" parent="Game" instance=ExtResource("7_rgx3o")]
+position = Vector2(1157, 191)
+
+[node name="SandTimerEnemy" parent="Game" instance=ExtResource("8_b8cfi")]
+position = Vector2(320, 53)
 
 [node name="StartGameScreen" type="Node2D" parent="."]
 script = ExtResource("5_44b12")
@@ -313,5 +391,121 @@ theme_override_font_sizes/font_size = 24
 text = "+150"
 
 [node name="WinScreen" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("11_nmhe3")
+
+[node name="ColorRect" type="ColorRect" parent="WinScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4117647)
+
+[node name="WinNodes" type="CanvasGroup" parent="WinScreen"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WinScreen/WinNodes"]
+texture_filter = 1
+position = Vector2(615, 291)
+scale = Vector2(2.2, 2.2)
+sprite_frames = SubResource("SpriteFrames_b8cfi")
+animation = &"Win"
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://sprites/WinScreenLogo.aseprite",
+"source_uid": 3508240705792412257
+}
+metadata/_aseprite_wizard_source_file_hash_ = "a631c47b13a9eff4535fbd9d00cc02d8"
+
+[node name="ConfettiLeft" parent="WinScreen/WinNodes" instance=ExtResource("11_luwg1")]
+position = Vector2(-16, 751)
+
+[node name="ConfettiRight" parent="WinScreen/WinNodes" instance=ExtResource("11_luwg1")]
+position = Vector2(1306, 747)
+rotation = -1.1364723
+
+[node name="ScoreLabel" type="Label" parent="WinScreen/WinNodes"]
+offset_left = -1.0
+offset_top = 439.0
+offset_right = 1281.0
+offset_bottom = 476.0
+theme_override_fonts/font = ExtResource("5_ypj6x")
+theme_override_font_sizes/font_size = 30
+text = "Final Score: 100000"
+horizontal_alignment = 1
+
+[node name="PressToContinueLabel" type="RichTextLabel" parent="WinScreen/WinNodes"]
+offset_left = -1.0
+offset_top = 476.0
+offset_right = 1279.0
+offset_bottom = 513.0
+theme_override_fonts/normal_font = ExtResource("5_ypj6x")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[pulse]~ Press Space to See Credits ~[/pulse]"
+horizontal_alignment = 1
+
+[node name="YaySoundPlayer" type="AudioStreamPlayer" parent="WinScreen"]
+stream = ExtResource("13_e4g4f")
+
+[node name="DeathScreen" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("11_ai2o8")
+fadeBackTime = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="DeathScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7294118)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DeathScreen"]
+texture_filter = 1
+position = Vector2(625, 290)
+scale = Vector2(2.21875, 2.21875)
+sprite_frames = SubResource("SpriteFrames_nmhe3")
+animation = &"Death"
+frame_progress = 0.93361914
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://sprites/DeathScreenLogo.aseprite",
+"source_uid": 4530867883931633166
+}
+metadata/_aseprite_wizard_source_file_hash_ = "cb33d4b8b32d403bf8414018801e961a"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DeathScreen"]
+offset_left = 2.0
+offset_top = 451.0
+offset_right = 1276.0
+offset_bottom = 496.0
+theme_override_fonts/normal_font = ExtResource("5_ypj6x")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[pulse]~ Press Space to Restart ~[/pulse]"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Game/SuccessZone" to="Game/SuccessZone" method="_on_body_entered"]

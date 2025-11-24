@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo4chcqljkj0"]
+
+[ext_resource type="AudioStream" uid="uid://65w7d1ws68je" path="res://music/ending.ogg" id="1_0bpdh"]
+[ext_resource type="FontFile" uid="uid://yuc5ar1ekt5o" path="res://fonts/Orange Kid.otf" id="1_0ctdu"]
+[ext_resource type="PackedScene" uid="uid://djnve7xcov8j4" path="res://prefabs/Player.tscn" id="3_2fbfq"]
+[ext_resource type="Script" uid="uid://cxdk5mb2reia2" path="res://scripts/credits_exit.gd" id="4_2fbfq"]
+
+[sub_resource type="Gradient" id="Gradient_0ctdu"]
+offsets = PackedFloat32Array(0.012847966, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.10980392)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2fbfq"]
+gradient = SubResource("Gradient_0ctdu")
+width = 51
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0ctdu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fbfq"]
+size = Vector2(121, 273)
+
+[node name="Credits" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.096204735, 0.09620475, 0.096204735, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 637.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.019607844)
+
+[node name="ColorRect3" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 89.0
+offset_top = 720.0
+offset_right = -1102.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.13905
+texture = SubResource("GradientTexture1D_2fbfq")
+
+[node name="NameLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_top = 124.0
+offset_right = 1279.0
+offset_bottom = 205.0
+theme_override_fonts/normal_font = ExtResource("1_0ctdu")
+theme_override_font_sizes/normal_font_size = 58
+text = "GAME NAME"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_top = 194.0
+offset_right = 1281.0
+offset_bottom = 447.0
+theme_override_fonts/normal_font = ExtResource("1_0ctdu")
+theme_override_fonts/bold_font = ExtResource("1_0ctdu")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "Art by [Gabby Pseudonym]
+Programming by c272
+
+~
+
+Level Music - Juhani Junkala (opengameart.org)
+Created in Lightbox & Godot Engine"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0bpdh")
+autoplay = true
+parameters/looping = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Player" parent="CanvasLayer2" instance=ExtResource("3_2fbfq")]
+position = Vector2(61, 627)
+scale = Vector2(3, 3)
+speed = 300
+can_shoot = false
+can_shield = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CanvasLayer2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer2/StaticBody2D"]
+position = Vector2(0, 492)
+rotation = -3.1413236
+shape = SubResource("WorldBoundaryShape2D_0ctdu")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="CanvasLayer2"]
+position = Vector2(0, 229)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer2/StaticBody2D2"]
+position = Vector2(0, 492)
+rotation = -6.279663
+shape = SubResource("WorldBoundaryShape2D_0ctdu")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="CanvasLayer2"]
+position = Vector2(0, 229)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer2/StaticBody2D3"]
+position = Vector2(0, 492)
+rotation = -4.7054667
+shape = SubResource("WorldBoundaryShape2D_0ctdu")
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer2"]
+script = ExtResource("4_2fbfq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer2/Area2D"]
+position = Vector2(1418.5, 582.5)
+shape = SubResource("RectangleShape2D_2fbfq")
+
+[connection signal="body_entered" from="CanvasLayer2/Area2D" to="CanvasLayer2/Area2D" method="_on_body_entered"]

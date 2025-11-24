@@ -8,13 +8,17 @@ const TIME_MUL_SPEED: float = 2.0
 
 # Exported variables.
 @export var speed = 150
+@export var can_shoot = true
+@export var can_shield = true
+@export var can_melee = true
 
 # Player state information.
-enum PlayerState{MOVING, SHOOTING, SHIELD, DAMAGE, DEAD}
+enum PlayerState{MOVING, SHOOTING, SHIELD, MELEE, DAMAGE, DEAD, MOVEMENT_LOCKED}
 var state: PlayerState = PlayerState.MOVING
 
 # Player state.
 var health: int = 3
+var melee_cur_anim = null
 
 ######################
 ## UPDATE FUNCTIONS ##
@@ -30,6 +34,8 @@ func _process(delta: float) -> void:
 			shooting_process(delta)
 		PlayerState.SHIELD:
 			shield_process(delta)
+		PlayerState.MELEE:
+			melee_process(delta)
 		PlayerState.DAMAGE:
 			damage_process(delta)
 		PlayerState.DEAD:
@@ -63,6 +69,8 @@ func switch_state(new_state: PlayerState) -> void:
 			shooting_entered()
 		PlayerState.SHIELD:
 			shield_entered()
+		PlayerState.MELEE:
+			melee_entered()
 		PlayerState.DAMAGE:
 			damage_entered()
 		PlayerState.DEAD:
@@ -77,13 +85,18 @@ func switch_state(new_state: PlayerState) -> void:
 # Process function for movement.
 func moving_process(_delta: float):
 	# If the user has pressed the fire button, enter fire mode.
-	if Input.is_action_just_pressed("fire"):
+	if can_shoot and Input.is_action_just_pressed("fire"):
 		switch_state(PlayerState.SHOOTING)
 		return
 		
 	# If the user has pressed the shield button, enter shield mode.
-	if Input.is_action_just_pressed("shield"):
+	if can_shield and Input.is_action_just_pressed("shield"):
 		switch_state(PlayerState.SHIELD)
+		return
+		
+	# If the user has pressed the melee button, enter melee mode.
+	if can_melee and Input.is_action_just_pressed("melee"):
+		switch_state(PlayerState.MELEE)
 		return
 
 # Physics process function for movement.
@@ -102,6 +115,9 @@ func moving_physics_process(_delta: float):
 func shooting_entered():
 	# Begin the shooting animation.
 	$AnimatedSprite2D.play("Shooting")
+	
+	# Play the fire sound.
+	$FireSoundPlayer.playing = true
 	
 	# Determine the direction the bullet will go in.
 	var bulletDir = -1 if $AnimatedSprite2D.flip_h else 1
@@ -133,6 +149,39 @@ func shield_process(_delta: float):
 	var dir = Input.get_vector("left", "right", "up", "down")
 	if dir.x != 0:
 		$AnimatedSprite2D.flip_h = dir.x < 0
+		
+## MELEE
+
+func melee_entered():
+	# Reset melee state.
+	melee_cur_anim = "MeleeForward"
+	
+	# Play the initial melee animation.
+	$AnimatedSprite2D.play("MeleeForward")
+	
+func melee_process(_delta: float):
+	if !$AnimatedSprite2D.is_playing():
+		# If we just finished the forward animation, play the final animation.
+		if melee_cur_anim == "MeleeForward":
+			$AnimatedSprite2D.play("MeleeHit")
+			melee_cur_anim = "MeleeHit"
+			# Perform damage.
+			melee_do_damage()
+		elif melee_cur_anim == "MeleeHit":
+			# Begin playing the final pull in animation.
+			$AnimatedSprite2D.play("MeleeFinal")
+			melee_cur_anim = "MeleeFinal"
+		else:
+			# Return to moving state.
+			melee_cur_anim = null
+			switch_state(PlayerState.MOVING)
+			
+func melee_do_damage():
+	# Find overlapping bodies, damage them.
+	var bodies = $MeleeArea.get_overlapping_bodies()
+	for body in bodies:
+		if body.has_method("do_damage"):
+			body.do_damage()
 
 ## DAMAGE
 
@@ -140,7 +189,7 @@ func shield_process(_delta: float):
 func do_damage():
 	# If the player is already in an invulnerable state, ignore.
 	match self.state:
-		PlayerState.DAMAGE, PlayerState.DEAD:
+		PlayerState.DAMAGE, PlayerState.DEAD, PlayerState.MOVEMENT_LOCKED:
 			return
 	
 	# Do damage, update our own state.
@@ -162,8 +211,11 @@ func damage_process(_delta: float):
 ## DEAD
 
 func dead_entered():
+	# Die.
 	$AnimatedSprite2D.play("Death")
-	pass
+	
+	# Show the death screen.
+	$"../../DeathScreen".fade_in()
 	
 func dead_process(_delta: float):
 	pass
@@ -188,3 +240,9 @@ func update_time_multiplier(delta: float):
 	var dir = -1 if is_slowing_time else 1
 	var timeMultDelta = TIME_MUL_SPEED * delta * dir
 	Global.time_multiplier = clamp(Global.time_multiplier + timeMultDelta, -1.0, 1.0)
+
+## MOVEMENT LOCK
+func lock_movement():
+	# Play the idle animation.
+	$AnimatedSprite2D.play("Idle")
+	switch_state(PlayerState.MOVEMENT_LOCKED)

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b5s1y5jxhsp6u"
+path="res://.godot/imported/DeathScreenLogo.aseprite-65cdb5f8664b957175e69db05978417a.res"
+
+[deps]
+
+source_file="res://sprites/DeathScreenLogo.aseprite"
+dest_files=["res://.godot/imported/DeathScreenLogo.aseprite-65cdb5f8664b957175e69db05978417a.res"]
+
+[params]
+
