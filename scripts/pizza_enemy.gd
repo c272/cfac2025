@@ -56,6 +56,9 @@ func waiting_process(_delta: float):
 ## CHASING
 
 func chasing_entered():
+	# Play the "woof" sound effect.
+	$AudioStreamPlayer2D.playing = true
+	
 	# Begin playing the moving animation.
 	$AnimatedSprite2D.play("Movement")
 	
@@ -97,7 +100,7 @@ func retreating_physics_process(_delta: float):
 	velocity = -toPlayer.normalized() * moveSpeed * Global.time_multiplier
 
 ## DAMAGE
-func do_damage():
+func do_damage(_damage_pos: Vector2):
 	# TODO: Heath
 	queue_free()
 
@@ -105,7 +108,7 @@ func do_damage():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	# If the body entered was the player, do damage.
 	if body == playerObj:
-		playerObj.do_damage()
+		playerObj.do_damage(Vector2.ZERO)
 		switch_state(State.RETREATING)
 		
 		# If the player died, never return from a retreating state.

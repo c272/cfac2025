@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Modularity/TextureProgressBar.value = 100 * (Global.time_modify_gauge_time / Global.TIME_GAUGE_MAX_TIME)
+	$Modularity/TimeBar/TextureProgressBar.value = 100 * (Global.time_modify_gauge_time / Global.TIME_GAUGE_MAX_TIME)
 	
 	# Decrease modularity for points add label.
 	if $Modularity/PointsAdd.self_modulate.a > 0:

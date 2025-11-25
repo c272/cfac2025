@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://dbmr6h5e2ff8p"]
+[gd_scene load_steps=13 format=4 uid="uid://dbmr6h5e2ff8p"]
 
 [ext_resource type="Script" uid="uid://cwe2xmmt866eb" path="res://scripts/pizza_enemy.gd" id="1_k4b2t"]
 [ext_resource type="Script" uid="uid://b2shq2gjd4fvt" path="res://addons/ropesim/Rope.gd" id="3_jniym"]
 [ext_resource type="Script" uid="uid://dfppmnngy2wx4" path="res://addons/ropesim/RopeRendererLine2D.gd" id="4_jniym"]
 [ext_resource type="Texture2D" uid="uid://devesiti3dqsa" path="res://sprites/PizzaEnemyChainlink.png" id="4_oiob4"]
+[ext_resource type="AudioStream" uid="uid://b020g0njhdqin" path="res://sfx/woof.wav" id="5_jniym"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgbkb"]
 radius = 11.0
@@ -107,5 +108,10 @@ metadata/_custom_type_script = "uid://dfppmnngy2wx4"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-9, -1)
 shape = SubResource("CircleShape2D_hojjh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-9, 0)
+stream = ExtResource("5_jniym")
+volume_db = 17.204
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

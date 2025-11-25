@@ -62,6 +62,8 @@ func falling_process(delta: float):
 		apply_falling_damage()
 	
 	if time_moving > fallTime:
+		# Play the ground hit sound.
+		$AudioStreamPlayer2D.playing = true
 		switch_state(State.MOVING_UP)
 		
 func apply_falling_damage():
@@ -70,7 +72,7 @@ func apply_falling_damage():
 		if body != player:
 			continue
 		# Do damage to the player.
-		player.do_damage()
+		player.do_damage(Vector2.ZERO)
 		damage_dealt = true
 	
 ## MOVING UP

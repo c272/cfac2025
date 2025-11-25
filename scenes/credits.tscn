@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo4chcqljkj0"]
+[gd_scene load_steps=10 format=4 uid="uid://bo4chcqljkj0"]
 
 [ext_resource type="AudioStream" uid="uid://65w7d1ws68je" path="res://music/ending.ogg" id="1_0bpdh"]
 [ext_resource type="FontFile" uid="uid://yuc5ar1ekt5o" path="res://fonts/Orange Kid.otf" id="1_0ctdu"]
@@ -12,6 +12,10 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.10980392)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_2fbfq"]
 gradient = SubResource("Gradient_0ctdu")
 width = 51
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_2fbfq"]
+_data = PackedByteArray("AAADAAUAAAABAAAAaAEAAH0AAADYAgAAUklGRtACAABXRUJQVlA4TMMCAAAvZwEfEHegoI0k5UDCvQFm8G+NbaiNJLV5YptRAZkrQf1XpBQztW28f0SwiWBWVjE1TGbzHwAA+O9tHOWhVuI39OKfWbQkEbjocEQyf4Mcbf/TyAkeQPWmUnja5a093fJumMl9UKEDzAXCPNO5S0XuF5UbZLow3SHSX3/9BaZgRP8hSpJkKckG1IXA3r3nN2z4t39m9/nJVljRX9qJLdZakK8JN0/svBDLUk4qaZr2+3021+i8/2HNcbTOcRNSBBYldHWElDYhRcgzLxk6dRBTOZWmS1K+7ZvRXeYaGWTehLK+wUbtRAjRfyNVhJllqTOZIF2tXGZeLkDqopsiN3NDND+P7yH5bGcE4dY1Oau/WbzI0YhlmSxaVsR9FnXJFZEPMPYcYoypNxsn2pnMWZIkhjw35QOAyjtL+6BIW/EW6HuIxmXLh+GyH9Ufl8BtzU0KKWWDRq3jzDgrISsfA3saEktqCqRIOfN9B2S5/lqZ11+jtJpA80X9DG6AMcYU87692tHOStHbZw64zCIc31setyTFixyNWJa/BLSTTqcjVW4K28VXbmPV75aaKcpchUMxMwY+Qy4zjwutEaqzIlWEmWXZ/CFfBJIuSSSTic7ivlJG6hrSPl3WmkNonUMAXsSlkROHri4zLwyQNjAJ/osGqv3eEFnIwqSALKkLCpFCGNQhlIFZsBoGZajVF+x28p84J+A684ENBjC44NHOgIirhsh0Bu0ynQmr4R5s46nkzm7GeZZx+xOUbM0Tl8eX4V4A2aBH3XqBdhCoKtkEVgcvqcapJSm6WYvvI2jpN2J4mYhVlnESHb6PKNhHkD74AloXllySpDXvhd+BIKglwcsCEZ+nQka8Q870vWi1uuoHeTisnuMLdTiK60JVm1iIVjdS8IaGglAGttTjkdybmYIMDBvP4oEjoRQ35a2U899/v5ttAAA=")
+size_override = Vector2(360, 125)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0ctdu"]
 
@@ -31,7 +35,7 @@ grow_vertical = 2
 color = Color(0.096204735, 0.09620475, 0.096204735, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 637.0
@@ -52,24 +56,15 @@ grow_vertical = 2
 rotation = 3.13905
 texture = SubResource("GradientTexture1D_2fbfq")
 
-[node name="NameLabel" type="RichTextLabel" parent="CanvasLayer"]
-offset_top = 124.0
-offset_right = 1279.0
-offset_bottom = 205.0
-theme_override_fonts/normal_font = ExtResource("1_0ctdu")
-theme_override_font_sizes/normal_font_size = 58
-text = "GAME NAME"
-horizontal_alignment = 1
-
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-offset_top = 194.0
+offset_top = 251.0
 offset_right = 1281.0
-offset_bottom = 447.0
+offset_bottom = 504.0
 theme_override_fonts/normal_font = ExtResource("1_0ctdu")
 theme_override_fonts/bold_font = ExtResource("1_0ctdu")
 theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
-text = "Art by [Gabby Pseudonym]
+text = "Art by Ace Defective
 Programming by c272
 
 ~
@@ -77,6 +72,36 @@ Programming by c272
 Level Music - Juhani Junkala (opengameart.org)
 Created in Lightbox & Godot Engine"
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 354.0
+offset_top = 86.0
+offset_right = 932.88
+offset_bottom = 287.0
+texture = SubResource("PortableCompressedTexture2D_2fbfq")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://sprites/Logo.aseprite",
+"source_uid": 7467078965372390210
+}
+metadata/_aseprite_wizard_source_file_hash_ = "a514fec56b380f4c729571f345359f81"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_0bpdh")

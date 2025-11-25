@@ -140,9 +140,16 @@ func shield_entered():
 	$AnimatedSprite2D.play("Shield")
 	pass
 	
-func shield_process(_delta: float):
+func shield_process(delta: float):
 	# If the user isn't pressing the shield key, exit.
 	if !Input.is_action_pressed("shield"):
+		switch_state(PlayerState.MOVING)
+		
+	Global.time_modify_gauge_time = max(Global.time_modify_gauge_time - delta, 0)
+	Global.can_modify_time = true if Global.time_modify_gauge_time > 0 else false
+		
+	# If the user has run out of juice, exit.
+	if !Global.can_modify_time:
 		switch_state(PlayerState.MOVING)
 		
 	# Update direction.
@@ -178,19 +185,29 @@ func melee_process(_delta: float):
 			
 func melee_do_damage():
 	# Find overlapping bodies, damage them.
-	var bodies = $MeleeArea.get_overlapping_bodies()
+	var bodies = $MeleeAreaLeft.get_overlapping_bodies() if $AnimatedSprite2D.flip_h else $MeleeArea.get_overlapping_bodies() 
 	for body in bodies:
-		if body.has_method("do_damage"):
+		if body.has_method("do_damage") and body != self:
 			body.do_damage()
 
 ## DAMAGE
 
 # Adds damage to the player.
-func do_damage():
+func do_damage(damage_pos: Vector2):
 	# If the player is already in an invulnerable state, ignore.
 	match self.state:
 		PlayerState.DAMAGE, PlayerState.DEAD, PlayerState.MOVEMENT_LOCKED:
 			return
+			
+	# If the player is in the shield state, do no damage.
+	if self.state == PlayerState.SHIELD and damage_pos != Vector2.ZERO:
+		if damage_pos.x > global_position.x and !$AnimatedSprite2D.flip_h:
+			return
+		if damage_pos.x < global_position.x and $AnimatedSprite2D.flip_h:
+			return
+			
+	# Play the hitsound.
+	$HitSoundPlayer.playing = true
 	
 	# Do damage, update our own state.
 	self.health -= 1
@@ -228,10 +245,10 @@ func update_time_multiplier(delta: float):
 	# Determine whether we're slowing time.
 	var is_slowing_time = false
 	if Input.is_action_pressed("timeslow") and Global.can_modify_time:
-		Global.time_modify_gauge_time = max(Global.time_modify_gauge_time - delta, 0);
+		Global.time_modify_gauge_time = max(Global.time_modify_gauge_time - delta, 0)
 		is_slowing_time = true if Global.time_modify_gauge_time > 0 else false
 		Global.can_modify_time = is_slowing_time
-	elif !Global.can_modify_time or !Input.is_action_pressed("timeslow"):
+	elif !Global.can_modify_time or (!Input.is_action_pressed("timeslow") and !Input.is_action_pressed("shield")):
 		# Update whether we can modify time again.		
 		Global.time_modify_gauge_time = min(Global.time_modify_gauge_time + delta, Global.TIME_GAUGE_MAX_TIME);
 		Global.can_modify_time = Global.time_modify_gauge_time >= Global.TIME_GAUGE_MAX_TIME

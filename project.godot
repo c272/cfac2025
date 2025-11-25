@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Chronos"
+config/name="Chrono Strike"
 run/main_scene="uid://bpu42cfieriua"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://h4pix5mo0ki7"
 
 [autoload]
 
@@ -24,6 +24,7 @@ Global="*res://scripts/global.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="viewport"
 
 [editor_plugins]
 

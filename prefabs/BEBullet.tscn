@@ -80,6 +80,7 @@ animations = [{
 script = ExtResource("1_y8hs7")
 speed = 250.0
 move_anim = "Cog Nail"
+is_from_enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)

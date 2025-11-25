@@ -98,6 +98,9 @@ func countdown_entered():
 	# Always play the countdown facing right.
 	$AnimatedSprite2D.flip_h = false
 	
+	# Play the countdown sound.
+	$CountdownPlayer.playing = true
+	
 	# Begin playing the countdown animation.
 	$AnimatedSprite2D.play("Countdown")
 
@@ -111,9 +114,12 @@ func explosion_entered():
 	# Play the explosion animation.
 	$AnimatedSprite2D.play("Explosion")
 	
+	# Play the explosion sound.
+	$AudioStreamPlayer2D.playing = true
+	
 	# If the player is within N units of us, do damage.
 	if (playerObj.global_position - global_position).length() < damageDist:
-		playerObj.do_damage()
+		playerObj.do_damage(Vector2.ZERO)
 	
 func explosion_process(_delta: float):
 	if !$AnimatedSprite2D.is_playing():
@@ -121,7 +127,7 @@ func explosion_process(_delta: float):
 		queue_free()
 
 ## DAMAGE
-func do_damage():
+func do_damage(_damage_pos: Vector2):
 	# If we're exploding, ignore.
 	if state == State.EXPLOSION:
 		return

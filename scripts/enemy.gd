@@ -24,7 +24,7 @@ func fire_bullet():
 	self.bullet_spawn_pending = true
 	$AnimatedSprite2D.play("Attack")
 
-func do_damage():
+func do_damage(_damage_pos: Vector2):
 	self.health -= 1
 	# Kill ourselves.
 	# TODO: Animations etc.
