@@ -188,7 +188,7 @@ func melee_do_damage():
 	var bodies = $MeleeAreaLeft.get_overlapping_bodies() if $AnimatedSprite2D.flip_h else $MeleeArea.get_overlapping_bodies() 
 	for body in bodies:
 		if body.has_method("do_damage") and body != self:
-			body.do_damage()
+			body.do_damage(Vector2.ZERO)
 
 ## DAMAGE
 
